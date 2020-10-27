@@ -1,11 +1,10 @@
+//import express and the thought-routes.js & user-routers.js files
 const router = require('express').Router();
-//imports the userRoutes
-const userRoutes = require('./user-routes');
-//imports the thoughtRoutes
 const thoughtRoutes = require('./thought-routes');
+const userRoutes = require('./user-routes');
 
-router.use('/users', userRoutes);
 router.use('/thoughts', thoughtRoutes);
+router.use('/users', userRoutes);
 
-//exports both the user and thought routes
+//export to be used in routes/index.js
 module.exports = router;
