@@ -15,7 +15,7 @@ const thoughtSchema = new Schema(
         //grabs current time and assigns it to thought
         createTime: {
             default: Date.now,
-            get: (timestamp) => moment(timestamp).format('MMM Do, YYYY [at] hh:mm a'),
+            get: (createdAtTime) => moment(createdAtTime).format('MMM Do, YYYY [at] hh:mm a'),
             type: Date
         },
 
@@ -39,10 +39,9 @@ const thoughtSchema = new Schema(
 
 thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
-  });
-  
-  const Thought = model('Thought', thoughtSchema);
-  
-  //exports Thought model to be used outside of file
-  module.exports = Thought;
-  
+});
+
+const Thought = model('Thought', thoughtSchema);
+
+//exports Thought model to be used outside of file
+module.exports = Thought;

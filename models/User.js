@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 
-//username, email, thoughts, friends will be data attached to the User
+//constructor for new User 
 const userSchema = new Schema({
     username: {
         //makes it so the username is required
@@ -39,20 +39,20 @@ const userSchema = new Schema({
         },
     ],
 },
-{
-    toJSON: {
-        virtuals: true,
-    },
-    id: false,
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: false,
     }
 );
 
 
 userSchema.virtual('friendCount').get(function () {
     return this.friends.length;
-  });
-  
-  const User = model('User', userSchema);
-  
-  //export the User model
-  module.exports = User;
+});
+
+const User = model('User', userSchema);
+
+//export the User model
+module.exports = User;
